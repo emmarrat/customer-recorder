@@ -8,7 +8,7 @@ const theme = createTheme({
         fullWidth: true,
       }
     }
-  }
+  },
 });
 
 export default theme;
