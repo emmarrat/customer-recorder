@@ -1,8 +1,9 @@
 import React from 'react';
-import { Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 import {Container, CssBaseline} from "@mui/material";
 import AppToolbar from "./components/UI/AppToolbar";
+import Services from "./features/services/Services";
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       </header>
       <Container sx={{mt: 5}}>
         <Routes>
-
+          <Route path="/" element={<Services/>}/>
         </Routes>
       </Container>
     </>

@@ -1,11 +1,12 @@
 import React from 'react';
 import {AppBar, Grid, Toolbar, Typography} from "@mui/material";
 import {Link} from '../../styledComponents';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 const AppToolbar = () => {
   return (
-    <AppBar position="sticky" sx={{mb: 2 , background: 'linear-gradient(90deg, #F2B97B 16%, #E882BD 100%)', padding: "17px 0"}} >
+    <AppBar position="fixed" sx={{mb: 2 , background: 'linear-gradient(90deg, #F2B97B 16%, #E882BD 100%)', padding: "17px 0"}} >
       <Toolbar>
         <Grid container justifyContent="space-between" alignItems="center" spacing={3}>
           <Grid item
@@ -28,6 +29,7 @@ const AppToolbar = () => {
             <Typography variant="h6" fontWeight={600} component="div">
               <Link to="/my-works">Мои работы</Link>
             </Typography>
+            <FavoriteIcon fontSize="small"/>
             <Typography variant="h6" fontWeight={600} component="div">
               <Link to="/book-place">Записаться на процедуру</Link>
             </Typography>
