@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
-import {Grid} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {selectFetching, selectServices} from "./servicesSlice";
 import {fetchServices} from "./servicesThunks";
-import ServicesCard from "./components/ServicesCard";
+import ServicesCard from "./components/ServicesCard/ServicesCard";
 
 const Services = () => {
   const dispatch = useAppDispatch();
@@ -15,13 +14,11 @@ const Services = () => {
   }, [dispatch]);
 
   return (
-    <Grid container sx={{mt: "200px"}} justifyContent="center" alignItems="start">
+    <div className="services__wrapper">
       {services.map(service => (
-        <Grid item>
           <ServicesCard service={service} key={service.id}/>
-        </Grid>
       ))}
-    </Grid>
+    </div>
   );
 };
 

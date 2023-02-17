@@ -1,0 +1,40 @@
+.header {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #ef9b9b;
+    margin-bottom: 30px;
+}
+
+.header__wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+a {
+    margin: 5px 0;
+}
+
+.logo a{
+    font-size: 23px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    margin-right: 10px;
+    text-align: center;
+}
+.header__links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 430px;
+}
+
+.header__links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    margin-right: 5px;
+}
