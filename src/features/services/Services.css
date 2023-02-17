@@ -59,3 +59,29 @@ padding: 15px;
     font-size: 18px;
     text-align: center;
 }
+
+.datetime__wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    justify-items: center;
+}
+
+.date-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    box-shadow: 0 0 12px 8px #DDDDDD;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px 25px;
+}
+
+.date-card__date p {
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.date-card__hour p {
+   margin: 0;
+}
