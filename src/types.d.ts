@@ -18,6 +18,7 @@ export interface Datetime {
 }
 
 interface DateObject {
+  id: number;
   date: string;
   hours: string[];
 }

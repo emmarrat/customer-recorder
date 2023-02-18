@@ -16,7 +16,7 @@ const BookDatetime = () => {
   return (
     <div className="container datetime__wrapper ">
       {datetimes && datetimes.map((datetime) => (
-        <DatetimeCard datetime={datetime} key={Math.random()}/>
+        <DatetimeCard datetime={datetime} key={datetime.id}/>
       ))}
     </div>
   );

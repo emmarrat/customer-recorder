@@ -21,8 +21,9 @@ export const fetchDatetime = createAsyncThunk<DateObject[]>(
         const date = item.date_time.slice(0, 10);
         const time = item.date_time.slice(11, 16);
         if (!dates[date]) {
-          dates[date] = {date, hours: []};
+          dates[date] = { id: item.id, date, hours: []};
         }
+
         dates[date].hours.push(time);
       }
     return Object.values(dates);
