@@ -1,9 +1,10 @@
 import React from 'react';
-import {IDatetime} from "../../../../types";
+import {DateObject} from "../../../../types";
 import dayjs from "dayjs";
 import 'dayjs/locale/ru'
+
 interface Props {
-  datetime: IDatetime
+  datetime: DateObject
 }
 
 
@@ -11,10 +12,12 @@ const DatetimeCard: React.FC<Props> = ({datetime}) => {
   return (
     <div className="date-card">
       <div className="date-card__date">
-          <p> {dayjs(datetime.date_time).locale('ru').format('DD MMMM')}</p>
+        <h4>{dayjs(datetime.date).locale('ru').format('DD MMMM')}</h4>
       </div>
       <div className="date-card__hour">
-        <p> {dayjs(datetime.date_time).format('HH:mm')}</p>
+        {datetime.hours.map(hours => (
+            <button type="button" className="date-card__btn">{hours}</button>
+        ))}
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
-import {IDatetime, IService} from "../../types";
+import {DateObject, Service} from "../../types";
 import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../app/store";
 import {fetchDatetime, fetchServices} from "./servicesThunks";
 
 interface ServicesState {
-  services: IService[];
-  datetime: IDatetime[];
+  services: Service[];
+  datetime: DateObject[];
   fetchLoading: boolean;
 }
 

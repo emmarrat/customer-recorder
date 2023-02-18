@@ -5,9 +5,9 @@ import complex from './assets/images/complex.png';
 import lamiLashes from './assets/images/lami-lashes.jpeg';
 import muslimCorrection from './assets/images/muslim-correction.jpeg';
 import mustacheRemoving from './assets/images/mustach-removing.jpeg';
-import {IImages} from "./types";
+import {Images} from "./types";
 
-export const IMAGES: IImages[] = [
+export const IMAGES: Images[] = [
   {
     id: 1,
     image: lamiLashes,

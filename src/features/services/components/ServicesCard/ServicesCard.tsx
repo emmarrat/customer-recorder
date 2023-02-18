@@ -1,10 +1,10 @@
 import React from 'react';
-import {IService} from "../../../../types";
+import {Service} from "../../../../types";
 import {IMAGES} from "../../../../servicesPics";
 import '../../Services.css';
 
 interface Props {
-  service: IService;
+  service: Service;
 }
 
 const ServicesCard: React.FC<Props> = ({service}) => {
