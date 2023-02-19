@@ -5,9 +5,10 @@ import '../../Services.css';
 
 interface Props {
   service: Service;
+  onClick: (service: Service) => void;
 }
 
-const ServicesCard: React.FC<Props> = ({service}) => {
+const ServicesCard: React.FC<Props> = ({service, onClick}) => {
 
   const image = IMAGES.find((img) => img.id === service.id);
 
@@ -22,7 +23,7 @@ const ServicesCard: React.FC<Props> = ({service}) => {
           </div>
         </div>
         <div className="services-card__btn">
-          <button type="button">Выбрать</button>
+          <button onClick={() => onClick(service)} type="button">Выбрать</button>
         </div>
       </div>
   );

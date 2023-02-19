@@ -16,7 +16,7 @@ a {
     margin: 5px 0;
 }
 
-.logo a{
+.logo a {
     font-size: 23px;
     text-transform: uppercase;
     font-weight: 700;
@@ -25,11 +25,12 @@ a {
     margin-right: 10px;
     text-align: center;
 }
+
 .header__links {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
-    width: 430px;
 }
 
 .header__links a {
@@ -38,3 +39,25 @@ a {
     font-size: 20px;
     margin: 10px 5px 10px 0;
 }
+
+.header__links a:hover {
+    transform: scale(0.98);}
+
+.header__links a:first-child {
+    margin-right: 15px;
+}
+
+.icon {
+    margin: 0 5px 0 10px;
+    vertical-align: bottom;
+}
+
+.badge {
+    vertical-align: top;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+

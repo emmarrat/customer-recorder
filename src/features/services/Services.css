@@ -1,3 +1,9 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .services__wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -61,6 +67,12 @@
     font-size: 18px;
     text-align: center;
 }
+.services-card__btn button:hover {
+    text-decoration: underline;
+}
+.services-card__btn button:active {
+    box-shadow: inset 0 0 17px 5px #eed3b9;
+}
 
 .datetime__wrapper {
     display: grid;
@@ -107,4 +119,32 @@
 .date-card__btn:active {
     box-shadow: inset 0 0 17px 5px #ef9b9b;
 }
+
+.cart {
+    margin-top: 10px;
+    width: 20%;
+    background: #F2B97B;
+    border-radius: 9px;
+    max-height: 500px;
+}
+
+.cart__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+}
+
+.cart__title {
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 15px;
+}
+
+.cart__item {
+    margin: 0 0 6px;
+    font-weight: 300;
+}
+
 
