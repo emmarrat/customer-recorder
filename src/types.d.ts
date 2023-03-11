@@ -11,16 +11,10 @@ export interface Images {
   image: string;
 }
 
-export interface Datetime {
+export interface DatetimeApi {
   id: number;
   date_time: string;
   status: string;
-}
-
-interface DateObject {
-  id: number;
-  date: string;
-  hours: string[];
 }
 
 interface Customer {
@@ -28,10 +22,12 @@ interface Customer {
   phone: string;
 }
 
+export interface Datetime {
+  id: number;
+  hour: string;
+}
+
 interface SortedAppointment {
   date: string;
-  time: {
-    id: number;
-    hour: string;
-  }[];
+  time: Datetime[];
 }

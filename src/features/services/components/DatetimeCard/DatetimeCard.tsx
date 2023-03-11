@@ -16,7 +16,7 @@ const DatetimeCard: React.FC<Props> = ({datetime}) => {
       </div>
       <div className="date-card__hour">
         {datetime.time.map(hours => (
-            <button type="button" className="date-card__btn" key={hours.id}>{dayjs(hours.hour).format('HH:mm')}</button>
+          <button type="button" className="date-card__btn" key={hours.id}>{dayjs(hours.hour).format('HH:mm')}</button>
         ))}
       </div>
     </div>

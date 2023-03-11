@@ -4,6 +4,7 @@ import {addService, selectFetching, selectServices} from "./servicesSlice";
 import {fetchServices} from "./servicesThunks";
 import ServicesCard from "./components/ServicesCard/ServicesCard";
 import {Service} from "../../types";
+import './Services.css';
 
 const Services = () => {
   const dispatch = useAppDispatch();

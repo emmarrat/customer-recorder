@@ -1,7 +1,7 @@
 import React from 'react';
 import {Service} from "../../../../types";
 import {IMAGES} from "../../../../servicesPics";
-import '../../Services.css';
+import './ServicesCard.css';
 
 interface Props {
   service: Service;
@@ -23,7 +23,7 @@ const ServicesCard: React.FC<Props> = ({service, onClick}) => {
           </div>
         </div>
         <div className="services-card__btn">
-          <button onClick={() => onClick(service)} type="button">Выбрать</button>
+          <button onClick={() => onClick(service)} type="button" className="button">Выбрать</button>
         </div>
       </div>
   );

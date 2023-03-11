@@ -27,7 +27,6 @@ const Header = () => {
             />
             <span className="badge">{selectedServices.length}</span>
           </Link>
-
         </div>
       </div>
     </div>

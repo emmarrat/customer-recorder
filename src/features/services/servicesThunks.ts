@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {Datetime, Service, SortedAppointment} from "../../types";
+import {DatetimeApi, Service, SortedAppointment} from "../../types";
 import axiosApi from "../../axiosApi";
 
 export const fetchServices = createAsyncThunk<Service[]>(
@@ -16,12 +16,12 @@ export const fetchServices = createAsyncThunk<Service[]>(
 export const fetchDatetime = createAsyncThunk<SortedAppointment[]>(
   'services/fetchDatetime',
   async () => {
-    const response = await axiosApi.get<Datetime[]>('business-hours/?format=json');
+    const response = await axiosApi.get<DatetimeApi[]>('business-hours/?format=json');
     const responseData = response.data.sort((a, b) => Date.parse(a.date_time) - Date.parse(b.date_time));
 
     const sortedAppointments: SortedAppointment[] = [];
 
-    const appointmentsByDate: { [date: string]: Datetime[] } = {};
+    const appointmentsByDate: { [date: string]: DatetimeApi[] } = {};
 
     responseData.forEach(appointment => {
       const date = appointment.date_time.substring(0, 10);

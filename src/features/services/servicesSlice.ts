@@ -1,4 +1,4 @@
-import {Service, SortedAppointment} from "../../types";
+import {Datetime, Service, SortedAppointment} from "../../types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../../app/store";
 import {fetchDatetime, fetchServices} from "./servicesThunks";
@@ -7,6 +7,7 @@ interface ServicesState {
   services: Service[];
   datetime: SortedAppointment[];
   selectedItems: Service[];
+  selectedDatetime: Datetime | null;
   fetchLoading: boolean;
 }
 
@@ -14,7 +15,8 @@ const initialState: ServicesState = {
   services: [],
   datetime: [],
   selectedItems: [],
-  fetchLoading: false
+  fetchLoading: false,
+  selectedDatetime: null,
 };
 
 export const servicesSlice = createSlice({
@@ -29,7 +31,13 @@ export const servicesSlice = createSlice({
       if (existingIndex && !includes) {
         state.selectedItems.push(service);
       }
-    }
+    },
+    addDatetime: (state, {payload: datetime}: PayloadAction<Datetime>) => {
+      state.selectedDatetime = datetime;
+    },
+    removeDatetime: (state) => {
+      state.selectedDatetime = null;
+    },
   },
   extraReducers: builder => {
     builder.addCase(fetchServices.pending, (state) => {
@@ -57,7 +65,7 @@ export const servicesSlice = createSlice({
 
 export const servicesReducer = servicesSlice.reducer;
 
-export const {addService} = servicesSlice.actions;
+export const {addService, addDatetime, removeDatetime} = servicesSlice.actions;
 
 
 export const selectServices = (state: RootState) => state.services.services;

@@ -1,0 +1,29 @@
+
+.cart {
+    margin-top: 10px;
+    width: 20%;
+    background: #F2B97B;
+    border-radius: 9px;
+    max-height: 500px;
+}
+
+.cart__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+}
+
+.cart__title {
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 15px;
+}
+
+.cart__item {
+    margin: 0 0 6px;
+    font-weight: 300;
+}
+
+
