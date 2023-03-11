@@ -1,12 +1,12 @@
 import React from 'react';
-import {DateObject} from "../../../../types";
+import {SortedAppointment} from "../../../../types";
 import dayjs from "dayjs";
-import 'dayjs/locale/ru'
+import 'dayjs/locale/ru';
+import './DatetimeCard.css';
 
 interface Props {
-  datetime: DateObject
+  datetime: SortedAppointment
 }
-
 
 const DatetimeCard: React.FC<Props> = ({datetime}) => {
   return (
@@ -15,8 +15,8 @@ const DatetimeCard: React.FC<Props> = ({datetime}) => {
         <h4>{dayjs(datetime.date).locale('ru').format('DD MMMM')}</h4>
       </div>
       <div className="date-card__hour">
-        {datetime.hours.map(hours => (
-            <button type="button" className="date-card__btn">{hours}</button>
+        {datetime.time.map(hours => (
+            <button type="button" className="date-card__btn" key={hours.id}>{dayjs(hours.hour).format('HH:mm')}</button>
         ))}
       </div>
     </div>

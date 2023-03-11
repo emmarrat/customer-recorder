@@ -22,3 +22,16 @@ interface DateObject {
   date: string;
   hours: string[];
 }
+
+interface Customer {
+  name: string;
+  phone: string;
+}
+
+interface SortedAppointment {
+  date: string;
+  time: {
+    id: number;
+    hour: string;
+  }[];
+}

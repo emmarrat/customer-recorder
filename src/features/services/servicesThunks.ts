@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {DateObject, Datetime, Service} from "../../types";
+import {Datetime, Service, SortedAppointment} from "../../types";
 import axiosApi from "../../axiosApi";
 
 export const fetchServices = createAsyncThunk<Service[]>(
@@ -10,22 +10,42 @@ export const fetchServices = createAsyncThunk<Service[]>(
   }
 );
 
-export const fetchDatetime = createAsyncThunk<DateObject[]>(
+
+
+
+export const fetchDatetime = createAsyncThunk<SortedAppointment[]>(
   'services/fetchDatetime',
   async () => {
     const response = await axiosApi.get<Datetime[]>('business-hours/?format=json');
     const responseData = response.data.sort((a, b) => Date.parse(a.date_time) - Date.parse(b.date_time));
 
-      const dates: Record<string, DateObject> = {};
-      for (let item of responseData) {
-        const date = item.date_time.slice(0, 10);
-        const time = item.date_time.slice(11, 16);
-        if (!dates[date]) {
-          dates[date] = { id: item.id, date, hours: []};
-        }
+    const sortedAppointments: SortedAppointment[] = [];
 
-        dates[date].hours.push(time);
+    const appointmentsByDate: { [date: string]: Datetime[] } = {};
+
+    responseData.forEach(appointment => {
+      const date = appointment.date_time.substring(0, 10);
+      if (!appointmentsByDate[date]) {
+        appointmentsByDate[date] = [];
       }
-    return Object.values(dates);
+      appointmentsByDate[date].push(appointment);
+    });
+
+    // Sort appointments by time and format them for output
+    Object.entries(appointmentsByDate).forEach(([date, appointments]) => {
+      const sortedAppointmentsByTime = appointments.sort((a, b) =>
+        a.date_time.localeCompare(b.date_time)
+      );
+      const formattedAppointments = {
+        date,
+        time: sortedAppointmentsByTime.map(appointment => ({
+          id: appointment.id,
+          hour: appointment.date_time
+        }))
+      };
+      sortedAppointments.push(formattedAppointments);
+    });
+
+    return sortedAppointments
   }
 );

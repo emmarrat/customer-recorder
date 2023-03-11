@@ -1,11 +1,11 @@
-import {DateObject, Service} from "../../types";
+import {Service, SortedAppointment} from "../../types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../../app/store";
 import {fetchDatetime, fetchServices} from "./servicesThunks";
 
 interface ServicesState {
   services: Service[];
-  datetime: DateObject[];
+  datetime: SortedAppointment[];
   selectedItems: Service[];
   fetchLoading: boolean;
 }
