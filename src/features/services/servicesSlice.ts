@@ -71,4 +71,5 @@ export const {addService, addDatetime, removeDatetime} = servicesSlice.actions;
 export const selectServices = (state: RootState) => state.services.services;
 export const selectFetching = (state: RootState) => state.services.fetchLoading;
 export const selectDatetime = (state: RootState) => state.services.datetime;
-export const selectedItems = (state: RootState) => state.services.selectedItems;
+export const selectBookedServices = (state: RootState) => state.services.selectedItems;
+export const selectBookedDatetime  = (state: RootState) => state.services.selectedDatetime;

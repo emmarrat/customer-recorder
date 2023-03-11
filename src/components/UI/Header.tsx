@@ -3,13 +3,13 @@ import {Link} from 'react-router-dom';
 import './UI.css';
 import '../../App.css';
 import {useAppSelector} from "../../app/hooks";
-import {selectedItems} from "../../features/services/servicesSlice";
+import {selectBookedServices} from "../../features/services/servicesSlice";
 import {HandySvg} from 'handy-svg';
 import icon from '../../assets/icons/shopping-bag.svg';
 
 
 const Header = () => {
-  const selectedServices = useAppSelector(selectedItems);
+  const selectedServices = useAppSelector(selectBookedServices);
 
   return (
     <div className="header">

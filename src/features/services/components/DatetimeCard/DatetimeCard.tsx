@@ -1,14 +1,37 @@
-import React from 'react';
-import {SortedAppointment} from "../../../../types";
+import React, {useState} from 'react';
+import {Datetime, SortedAppointment} from "../../../../types";
 import dayjs from "dayjs";
 import 'dayjs/locale/ru';
 import './DatetimeCard.css';
+import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
+import {addDatetime, selectBookedDatetime, selectBookedServices} from "../../servicesSlice";
+import {Navigate, useNavigate} from "react-router-dom";
 
 interface Props {
   datetime: SortedAppointment
 }
 
 const DatetimeCard: React.FC<Props> = ({datetime}) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const selectedServices = useAppSelector(selectBookedServices);
+  const selectedDatetime = useAppSelector(selectBookedDatetime);
+  const [isSelected, setIsSelected] =  useState(false);
+
+  const chooseDatetime = (bookTime: Datetime) => {
+    dispatch(addDatetime(bookTime));
+    setIsSelected(true);
+    if(selectedServices.length === 0) {
+      navigate('/');
+    } else {
+      navigate('/book-customer');
+    }
+  };
+
+  if(selectedDatetime) {
+    return <Navigate to='/book-customer'/>
+  }
+
   return (
     <div className="date-card">
       <div className="date-card__date">
@@ -16,7 +39,15 @@ const DatetimeCard: React.FC<Props> = ({datetime}) => {
       </div>
       <div className="date-card__hour">
         {datetime.time.map(hours => (
-          <button type="button" className="date-card__btn" key={hours.id}>{dayjs(hours.hour).format('HH:mm')}</button>
+          <button
+            onClick={() => chooseDatetime(hours)}
+            type="button"
+            disabled={isSelected}
+            className="date-card__btn"
+            key={hours.id}
+          >
+            {dayjs(hours.hour).format('HH:mm')}
+          </button>
         ))}
       </div>
     </div>
