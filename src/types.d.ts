@@ -17,11 +17,6 @@ export interface DatetimeApi {
   status: string;
 }
 
-interface Customer {
-  name: string;
-  phone: string;
-}
-
 export interface Datetime {
   id: number;
   hour: string;
@@ -30,4 +25,11 @@ export interface Datetime {
 interface SortedAppointment {
   date: string;
   time: Datetime[];
+}
+
+interface PostData {
+  customer_full_name: string;
+  customer_phone: string;
+  business_hour: number;
+  services: number[];
 }
