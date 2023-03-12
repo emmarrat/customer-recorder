@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {DatetimeApi, Service, SortedAppointment} from "../../types";
+import {DatetimeApi, PostData, Service, SortedAppointment} from "../../types";
 import axiosApi from "../../axiosApi";
 
 export const fetchServices = createAsyncThunk<Service[]>(
@@ -9,9 +9,6 @@ export const fetchServices = createAsyncThunk<Service[]>(
     return response.data;
   }
 );
-
-
-
 
 export const fetchDatetime = createAsyncThunk<SortedAppointment[]>(
   'services/fetchDatetime',
@@ -49,3 +46,10 @@ export const fetchDatetime = createAsyncThunk<SortedAppointment[]>(
     return sortedAppointments
   }
 );
+
+export const createAppointment = createAsyncThunk<void, PostData>(
+  'services/createAppointment',
+  async (appointment) => {
+    await axiosApi.post('/appointments/', appointment);
+  }
+)

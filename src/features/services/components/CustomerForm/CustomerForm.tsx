@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import {PostData} from "../../../../types";
 import './CustomerForm.css';
-import {useAppSelector} from "../../../../app/hooks";
+import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
 import {selectBookedDatetime, selectBookedServices} from "../../servicesSlice";
 import {useNavigate} from "react-router-dom";
 import PhoneInput from 'react-phone-input-2'
+import {createAppointment} from "../../servicesThunks";
 
 
 const CustomerForm = () => {
+  const dispatch = useAppDispatch();
   const services = useAppSelector(selectBookedServices);
   const date = useAppSelector(selectBookedDatetime);
   const navigate = useNavigate();
@@ -19,7 +21,21 @@ const CustomerForm = () => {
    setName(e.target.value)
   };
 
-  const onFormSubmit = (e: React.FormEvent) => {
+
+  const validatePhoneNumber = (phoneNumber: string) => {
+    if (phoneNumber.slice(0, 3) !== "996") {
+      return false;
+    }
+
+    if (phoneNumber.length !== 12) {
+      return false;
+    }
+
+    return true;
+  };
+
+
+  const onFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (services.length === 0) {
       return navigate('/book-place');
@@ -27,12 +43,21 @@ const CustomerForm = () => {
     if (!date) {
       return navigate('/book-place');
     }
+
+    const validatedNumber = validatePhoneNumber(phone);
+
+    if(!validatedNumber) {
+      return alert( `Укажите телефонный номер в прафильном формате "+996 XXX XXX XXX" `)
+    }
+
     const obj: PostData = {
       customer_full_name: name,
-      customer_phone: phone,
+      customer_phone: '+'+phone,
       business_hour: date.id,
       services: services.map(service => service.id),
     }
+    await dispatch(createAppointment(obj));
+
     console.log(obj);
   };
 
