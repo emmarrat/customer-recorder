@@ -26,12 +26,7 @@ const CustomerForm = () => {
     if (phoneNumber.slice(0, 3) !== "996") {
       return false;
     }
-
-    if (phoneNumber.length !== 12) {
-      return false;
-    }
-
-    return true;
+    return phoneNumber.length === 12;
   };
 
 
@@ -57,6 +52,8 @@ const CustomerForm = () => {
       services: services.map(service => service.id),
     }
     await dispatch(createAppointment(obj));
+    setName('');
+    setPhone('')
 
     console.log(obj);
   };
@@ -75,6 +72,7 @@ const CustomerForm = () => {
               onChange={onNameChange}
               placeholder="Ваше имя"
               className="form__input"
+              required
             />
           </div>
           <div  className="form__item">
@@ -83,6 +81,11 @@ const CustomerForm = () => {
               value={phone}
               onChange={setPhone}
               placeholder="+996 XXX XXX XXX"
+              inputProps={{
+                name: 'phone',
+                required: true,
+                autoFocus: true
+              }}
             />
           </div>
 
