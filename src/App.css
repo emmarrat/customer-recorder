@@ -7,6 +7,7 @@ body {
 * {
     box-sizing: border-box;
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -33,9 +34,15 @@ body {
 
 .button:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
+
 button:active {
     box-shadow: inset 0 0 17px 5px #eed3b9;
+}
+
+.icon {
+    color: white;
 }
 
 html {

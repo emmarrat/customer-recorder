@@ -33,18 +33,22 @@ a {
     flex-wrap: wrap;
 }
 
-.header__links a {
+.header__link {
     text-decoration: none;
     color: #fff;
     font-size: 20px;
-    margin: 10px 5px 10px 0;
+    margin: 10px 15px 10px 0;
 }
 
-.header__links a:hover {
+.header__link:hover {
     transform: scale(0.98);}
 
-.header__links a:first-child {
-    margin-right: 15px;
+.header__link:last-child{
+    margin-right: 0;
+}
+
+.header__link_cart {
+    text-align: center;
 }
 
 .icon {
@@ -60,4 +64,17 @@ a {
     font-size: 14px;
 }
 
+.divider {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 800px;
+    height: 2px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.header__down {
+    display: flex;
+    justify-content: center;
+}
 

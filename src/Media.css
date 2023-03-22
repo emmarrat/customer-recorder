@@ -1,0 +1,5 @@
+@media screen and (max-width: 620px) {
+    .header__wrapper, .header__links {
+        justify-content: center;
+    }
+}

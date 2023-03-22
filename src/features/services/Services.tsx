@@ -18,8 +18,6 @@ const Services = () => {
     dispatch(fetchServices());
   }, [dispatch]);
 
-
-
   return (
         <div className="services__wrapper">
           {services.map(service => (

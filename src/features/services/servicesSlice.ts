@@ -79,7 +79,7 @@ export const servicesSlice = createSlice({
 
 export const servicesReducer = servicesSlice.reducer;
 
-export const {addService, addDatetime, removeDatetime} = servicesSlice.actions;
+export const {addService, addDatetime, removeDatetime, removeService} = servicesSlice.actions;
 
 
 export const selectServices = (state: RootState) => state.services.services;
