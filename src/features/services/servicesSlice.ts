@@ -9,6 +9,7 @@ interface ServicesState {
   selectedItems: Service[];
   selectedDatetime: Datetime | null;
   fetchLoading: boolean;
+  total: number;
 }
 
 const initialState: ServicesState = {
@@ -17,6 +18,7 @@ const initialState: ServicesState = {
   selectedItems: [],
   fetchLoading: false,
   selectedDatetime: null,
+  total: 0
 };
 
 export const servicesSlice = createSlice({
@@ -30,6 +32,16 @@ export const servicesSlice = createSlice({
       const includes = state.selectedItems.find((item) => item.id === service.id);
       if (existingIndex && !includes) {
         state.selectedItems.push(service);
+        state.total += parseFloat(service.price);
+      }
+    },
+    removeService:(state, {payload: service}: PayloadAction<Service>) => {
+      const existingIndex = state.services.find(item => {
+        return item.id === service.id;
+      });
+      if (existingIndex) {
+        state.selectedItems = state.selectedItems.filter((item) => item.id !== service.id);
+        state.total -= parseFloat(service.price);
       }
     },
     addDatetime: (state, {payload: datetime}: PayloadAction<Datetime>) => {
@@ -38,6 +50,8 @@ export const servicesSlice = createSlice({
     removeDatetime: (state) => {
       state.selectedDatetime = null;
     },
+
+
   },
   extraReducers: builder => {
     builder.addCase(fetchServices.pending, (state) => {
@@ -73,3 +87,4 @@ export const selectFetching = (state: RootState) => state.services.fetchLoading;
 export const selectDatetime = (state: RootState) => state.services.datetime;
 export const selectBookedServices = (state: RootState) => state.services.selectedItems;
 export const selectBookedDatetime  = (state: RootState) => state.services.selectedDatetime;
+export const selectTotal = (state: RootState) => state.services.total;

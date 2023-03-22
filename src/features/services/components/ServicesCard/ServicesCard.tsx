@@ -18,7 +18,7 @@ const ServicesCard: React.FC<Props> = ({service, onClick}) => {
         <div className="services-card__info">
           <h6 className="services-card__info-title">{service.title}</h6>
           <div>
-            <p>Процедура длится: {service.duration} минут</p>
+            <p>Продолжительность: {service.duration} минут</p>
             <p>Стоимость: {service.price} сом</p>
           </div>
         </div>

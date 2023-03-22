@@ -3,13 +3,14 @@ import {Link} from 'react-router-dom';
 import './UI.css';
 import '../../App.css';
 import {useAppSelector} from "../../app/hooks";
-import {selectBookedServices} from "../../features/services/servicesSlice";
+import {selectBookedDatetime, selectBookedServices} from "../../features/services/servicesSlice";
 import {HandySvg} from 'handy-svg';
 import icon from '../../assets/icons/shopping-bag.svg';
 
 
 const Header = () => {
   const selectedServices = useAppSelector(selectBookedServices);
+  const selectedDatetime  = useAppSelector(selectBookedDatetime);
 
   return (
     <div className="header">
@@ -17,8 +18,8 @@ const Header = () => {
         <div className="logo"><Link to="/">Aijana brows</Link></div>
         <div className="header__links">
           <Link to="/my-works">Мои работы</Link>
-          <Link className="header__service-link" to="/book-place">
-            Записаться на процедуру
+          <Link className="header__service-link" to="/book-date">
+            {selectedDatetime === null || selectedServices.length === 0 ? 'Выбрать день и время' : 'Оформить запись' }
             <HandySvg
               src={icon}
               className="icon"

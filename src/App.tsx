@@ -15,7 +15,7 @@ function App() {
       <main className="container">
         <Routes>
           <Route path="/" element={<Services/>}/>
-          <Route path="/book-place" element={<BookDatetime/>}/>
+          <Route path="/book-date" element={<BookDatetime/>}/>
           <Route path="/book-customer" element={<BookCustomer/>}/>
           <Route path="*" element={(<h2 className="not-found">Not found!</h2>)}/>
         </Routes>

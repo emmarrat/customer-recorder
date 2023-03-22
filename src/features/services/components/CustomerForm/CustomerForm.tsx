@@ -33,10 +33,10 @@ const CustomerForm = () => {
   const onFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (services.length === 0) {
-      return navigate('/book-place');
+      return navigate('/book-date');
     }
     if (!date) {
-      return navigate('/book-place');
+      return navigate('/book-date');
     }
 
     const validatedNumber = validatePhoneNumber(phone);
