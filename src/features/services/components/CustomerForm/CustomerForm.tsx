@@ -29,13 +29,9 @@ const CustomerForm = () => {
     return phoneNumber.length === 12;
   };
 
-
   const onFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (services.length === 0) {
-      return navigate('/book-date');
-    }
-    if (!date) {
+    if (services.length === 0 || !date) {
       return navigate('/book-date');
     }
 
@@ -53,9 +49,8 @@ const CustomerForm = () => {
     }
     await dispatch(createAppointment(obj));
     setName('');
-    setPhone('')
-
-    console.log(obj);
+    setPhone('');
+    navigate('/congrats');
   };
 
   return (

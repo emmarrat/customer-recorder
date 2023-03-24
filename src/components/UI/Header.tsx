@@ -18,7 +18,6 @@ const Header = () => {
         <div className="logo"><Link to="/">Aijana brows</Link></div>
         <div className="header__links">
           <Link className="header__link" to="/my-works">Мои работы</Link>
-
           <Link className="header__link" to="/book-date">
             {selectedDatetime === null || selectedServices.length === 0 ? 'Выбрать день и время' : 'Оформить запись'}
           </Link>

@@ -33,3 +33,7 @@ interface PostData {
   business_hour: number;
   services: number[];
 }
+
+interface PostResponse {
+  customer_full_name: string;
+}

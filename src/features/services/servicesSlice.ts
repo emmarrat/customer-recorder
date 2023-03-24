@@ -1,7 +1,7 @@
 import {Datetime, Service, SortedAppointment} from "../../types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../../app/store";
-import {fetchDatetime, fetchServices} from "./servicesThunks";
+import {createAppointment, fetchDatetime, fetchServices} from "./servicesThunks";
 
 interface ServicesState {
   services: Service[];
@@ -10,6 +10,8 @@ interface ServicesState {
   selectedDatetime: Datetime | null;
   fetchLoading: boolean;
   total: number;
+  client: string | null;
+  createLoading: boolean;
 }
 
 const initialState: ServicesState = {
@@ -18,7 +20,9 @@ const initialState: ServicesState = {
   selectedItems: [],
   fetchLoading: false,
   selectedDatetime: null,
-  total: 0
+  total: 0,
+  client: null,
+  createLoading: false,
 };
 
 export const servicesSlice = createSlice({
@@ -50,8 +54,12 @@ export const servicesSlice = createSlice({
     removeDatetime: (state) => {
       state.selectedDatetime = null;
     },
-
-
+    clearStates: (state) => {
+      state.selectedItems = [];
+      state.selectedDatetime = null;
+      state.total = 0;
+      state.client = null;
+    }
   },
   extraReducers: builder => {
     builder.addCase(fetchServices.pending, (state) => {
@@ -74,12 +82,22 @@ export const servicesSlice = createSlice({
     builder.addCase(fetchDatetime.rejected, (state) => {
       state.fetchLoading = false;
     });
+    builder.addCase(createAppointment.pending, (state) => {
+      state.createLoading = true;
+    });
+    builder.addCase(createAppointment.fulfilled, (state, {payload: client}) => {
+      state.createLoading = false;
+      state.client = client;
+    });
+    builder.addCase(createAppointment.rejected, (state) => {
+      state.createLoading = false;
+    });
   }
 });
 
 export const servicesReducer = servicesSlice.reducer;
 
-export const {addService, addDatetime, removeDatetime, removeService} = servicesSlice.actions;
+export const {addService, addDatetime, removeDatetime, removeService, clearStates} = servicesSlice.actions;
 
 
 export const selectServices = (state: RootState) => state.services.services;
@@ -88,3 +106,5 @@ export const selectDatetime = (state: RootState) => state.services.datetime;
 export const selectBookedServices = (state: RootState) => state.services.selectedItems;
 export const selectBookedDatetime  = (state: RootState) => state.services.selectedDatetime;
 export const selectTotal = (state: RootState) => state.services.total;
+export const selectClient = (state: RootState) => state.services.client;
+export const selectLoading = (state: RootState) => state.services.createLoading;

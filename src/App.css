@@ -34,6 +34,9 @@ body {
 
 .button:hover {
     text-decoration: underline;
+}
+
+button:hover {
     cursor: pointer;
 }
 

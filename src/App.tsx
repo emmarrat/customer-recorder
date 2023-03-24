@@ -1,14 +1,19 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 import Header from "./components/UI/Header";
-import Services from "./features/services/Services";
-import BookDatetime from "./features/services/BookDatetime";
-import BookCustomer from "./features/services/BookCustomer";
-import Cart from "./features/services/Cart";
+import Services from "./features/services/containers/Services";
+import BookDatetime from "./features/services/containers/BookDatetime";
+import BookCustomer from "./features/services/containers/BookCustomer";
+import Cart from "./features/services/containers/Cart";
 import './App.css';
+import Congrats from "./features/services/containers/Congrats";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import {useAppSelector} from "./app/hooks";
+import {selectClient} from "./features/services/servicesSlice";
 
 
 function App() {
+  const client = useAppSelector(selectClient);
   return (
     <>
       <header>
@@ -20,6 +25,11 @@ function App() {
           <Route path="/book-date" element={<BookDatetime/>}/>
           <Route path="/book-customer" element={<BookCustomer/>}/>
           <Route path="/cart" element={<Cart/>}/>
+          <Route path="/congrats" element={(
+            <ProtectedRoute isAllowed={client !== null}>
+              <Congrats/>
+            </ProtectedRoute>
+          )}/>
           <Route path="*" element={(<h2 className="not-found">Not found!</h2>)}/>
         </Routes>
       </main>

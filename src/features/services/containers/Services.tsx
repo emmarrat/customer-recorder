@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {addService, selectFetching, selectServices} from "./servicesSlice";
-import {fetchServices} from "./servicesThunks";
-import ServicesCard from "./components/ServicesCard/ServicesCard";
-import {Service} from "../../types";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks";
+import {addService, selectFetching, selectServices} from "../servicesSlice";
+import {fetchServices} from "../servicesThunks";
+import ServicesCard from "../components/ServicesCard/ServicesCard";
+import {Service} from "../../../types";
 import './Services.css';
 
 const Services = () => {

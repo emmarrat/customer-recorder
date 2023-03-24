@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {removeService, selectBookedServices, selectTotal} from "./servicesSlice";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks";
+import {removeService, selectBookedServices, selectTotal} from "../servicesSlice";
 import './Services.css';
-import {Service} from "../../types";
+import {Service} from "../../../types";
 import {useNavigate} from "react-router-dom";
 
 const Cart = () => {

@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {selectDatetime, selectFetching} from "./servicesSlice";
-import {fetchDatetime} from "./servicesThunks";
-import DatetimeCard from "./components/DatetimeCard/DatetimeCard";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks";
+import {selectDatetime, selectFetching} from "../servicesSlice";
+import {fetchDatetime} from "../servicesThunks";
+import DatetimeCard from "../components/DatetimeCard/DatetimeCard";
 
 const BookDatetime = () => {
 

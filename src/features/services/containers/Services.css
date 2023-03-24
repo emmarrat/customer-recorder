@@ -77,3 +77,49 @@
     text-transform: uppercase;
     margin: 0;
 }
+
+.congrats {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(110, 107, 107)
+}
+
+.congrats__wrapper {
+    width: 80%;
+    max-width: 600px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffff;
+    border-radius: 15px;
+}
+
+.congrats__content h4, .congrats__content h5 {
+    margin: 0 0 25px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.congrats__content span {
+    color: #e05959;
+    font-weight: bold;
+}
+
+.congrats__btn button {
+    text-align: center;
+    padding: 10px 18px;
+    background-color: #ef9b9b;
+    border-radius: 9px;
+    border: none;
+    color: #fff
+}
