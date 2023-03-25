@@ -2,7 +2,7 @@ import React from 'react';
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import {clearStates, selectBookedDatetime, selectClient} from "../servicesSlice";
 import dayjs from "dayjs";
-import {useNavigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 
 
 const Congrats = () => {
@@ -15,6 +15,11 @@ const Congrats = () => {
     navigate('/');
     dispatch(clearStates());
   }
+
+  if(!client) {
+    return <Navigate to="/"/>;
+  }
+
   return (
     <div className="congrats">
       <div className="congrats__wrapper">

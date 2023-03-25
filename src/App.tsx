@@ -7,13 +7,8 @@ import BookCustomer from "./features/services/containers/BookCustomer";
 import Cart from "./features/services/containers/Cart";
 import './App.css';
 import Congrats from "./features/services/containers/Congrats";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import {useAppSelector} from "./app/hooks";
-import {selectClient} from "./features/services/servicesSlice";
-
 
 function App() {
-  const client = useAppSelector(selectClient);
   return (
     <>
       <header>
@@ -25,11 +20,7 @@ function App() {
           <Route path="/book-date" element={<BookDatetime/>}/>
           <Route path="/book-customer" element={<BookCustomer/>}/>
           <Route path="/cart" element={<Cart/>}/>
-          <Route path="/congrats" element={(
-            <ProtectedRoute isAllowed={client !== null}>
-              <Congrats/>
-            </ProtectedRoute>
-          )}/>
+          <Route path="/congrats" element={(<Congrats/>)}/>
           <Route path="*" element={(<h2 className="not-found">Not found!</h2>)}/>
         </Routes>
       </main>
