@@ -2,4 +2,8 @@
     .header__wrapper, .header__links {
         justify-content: center;
     }
+
+    .logo {
+        margin-bottom: 20px;
+    }
 }
