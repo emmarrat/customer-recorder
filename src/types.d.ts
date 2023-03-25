@@ -37,3 +37,7 @@ interface PostData {
 interface PostResponse {
   customer_full_name: string;
 }
+
+interface ValidationError {
+  [key: string]: string;
+}

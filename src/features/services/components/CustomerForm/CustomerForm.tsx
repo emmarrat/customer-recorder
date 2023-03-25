@@ -6,6 +6,7 @@ import {selectBookedDatetime, selectBookedServices} from "../../servicesSlice";
 import {useNavigate} from "react-router-dom";
 import PhoneInput from 'react-phone-input-2'
 import {createAppointment} from "../../servicesThunks";
+import Modal from "../../../../components/UI/Modal";
 
 
 const CustomerForm = () => {
@@ -16,6 +17,9 @@ const CustomerForm = () => {
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('')
+  const [isModal, setModal] = useState(false);
+
+  const onClose = () => setModal(false);
 
   const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
    setName(e.target.value)
@@ -32,13 +36,12 @@ const CustomerForm = () => {
   const onFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (services.length === 0 || !date) {
-      return navigate('/book-date');
+      return setModal(true);
     }
-
     const validatedNumber = validatePhoneNumber(phone);
 
     if(!validatedNumber) {
-      return alert( `Укажите телефонный номер в прафильном формате "+996 XXX XXX XXX" `)
+      return setModal(true);
     }
 
     const obj: PostData = {
@@ -47,13 +50,14 @@ const CustomerForm = () => {
       business_hour: date.id,
       services: services.map(service => service.id),
     }
-    await dispatch(createAppointment(obj));
+    await dispatch(createAppointment(obj)).unwrap;
     setName('');
     setPhone('');
     navigate('/congrats');
   };
 
   return (
+    <>
     <form onSubmit={onFormSubmit}>
       <fieldset className="form__fieldset">
         <legend>Пожалуйста, заполните анкету</legend>
@@ -90,6 +94,12 @@ const CustomerForm = () => {
         </div>
       </fieldset>
     </form>
+      <Modal
+        visible={isModal}
+        content={<p>{ services.length === 0 || !date ? 'Пожалуйста, выберите желаемую процедуру и удобное время для посещения' : `Укажите телефонный номер в правильном формате "+996 XXX XXX XXX" ` }</p>}
+        onClose={onClose}
+      />
+    </>
   )
 };
 
