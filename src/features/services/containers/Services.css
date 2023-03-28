@@ -16,6 +16,11 @@
     justify-items: center;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .cart {
     display: flex;
     justify-content: center;
@@ -27,7 +32,6 @@
     padding: 20px 15px;
     box-shadow: 0 0 12px 8px #DDDDDD;
     border-radius: 9px;
-    max-height: 500px;
     width: 80%;
 }
 
@@ -64,18 +68,53 @@
     font-weight: 300;
 }
 
-.cart__remove-btn {
+.cart__setting_btn {
     border: none;
     border-radius: 8px;
     color: #fff;
     padding: 8px;
+    min-width: 109px;
+}
+
+.cart__remove-btn {
     background: #ec1515;
+}
+
+.cart__change-btn {
+    background: orange;
 }
 
 .cart__total {
     text-align: center;
     text-transform: uppercase;
-    margin: 0;
+    margin: 20px 0 0;
+}
+
+.cart__btns {
+    display: flex;
+    justify-content: center;
+}
+
+.cart__btn {
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+    width: 80%;
+    margin: 10px;
+}
+
+.cart__back_wrapper {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.cart__back {
+    width: auto;
+    padding: 20px;
+    font-size: 15px;
+    text-decoration: none;
+    text-transform: none;
+    color: black;
 }
 
 .congrats {

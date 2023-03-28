@@ -24,7 +24,7 @@ const DatetimeCard: React.FC<Props> = ({datetime}) => {
     if(selectedServices.length === 0) {
       navigate('/');
     } else {
-      navigate('/book-customer');
+      navigate('/cart');
     }
   };
 

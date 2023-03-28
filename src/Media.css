@@ -1,9 +1,23 @@
 @media screen and (max-width: 620px) {
+    body {
+        font-size: 13px;
+    }
     .header__wrapper, .header__links {
         justify-content: center;
     }
 
     .logo {
         margin-bottom: 20px;
+    }
+
+    .cart__item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .cart__text {
+        margin-bottom: 15px;
+    }
+    .cart__setting_btn {
+        align-self: center;
     }
 }

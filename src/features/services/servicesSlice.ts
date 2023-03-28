@@ -1,4 +1,4 @@
-import {Datetime, Service, SortedAppointment} from "../../types";
+import {Datetime, Service, SortedAppointment, ValidationError} from "../../types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../../app/store";
 import {createAppointment, fetchDatetime, fetchServices} from "./servicesThunks";
@@ -12,6 +12,7 @@ interface ServicesState {
   total: number;
   client: string | null;
   createLoading: boolean;
+  validationError: ValidationError | null;
 }
 
 const initialState: ServicesState = {
@@ -23,6 +24,7 @@ const initialState: ServicesState = {
   total: 0,
   client: null,
   createLoading: false,
+  validationError: null,
 };
 
 export const servicesSlice = createSlice({
@@ -89,16 +91,15 @@ export const servicesSlice = createSlice({
       state.createLoading = false;
       state.client = client;
     });
-    builder.addCase(createAppointment.rejected, (state) => {
+    builder.addCase(createAppointment.rejected, (state,{payload: error} ) => {
       state.createLoading = false;
+      state.validationError =  error || null;
     });
   }
 });
 
 export const servicesReducer = servicesSlice.reducer;
-
 export const {addService, addDatetime, removeDatetime, removeService, clearStates} = servicesSlice.actions;
-
 
 export const selectServices = (state: RootState) => state.services.services;
 export const selectFetching = (state: RootState) => state.services.fetchLoading;
@@ -108,3 +109,5 @@ export const selectBookedDatetime  = (state: RootState) => state.services.select
 export const selectTotal = (state: RootState) => state.services.total;
 export const selectClient = (state: RootState) => state.services.client;
 export const selectLoading = (state: RootState) => state.services.createLoading;
+export const selectValidationError = (state: RootState) => state.services.validationError;
+
