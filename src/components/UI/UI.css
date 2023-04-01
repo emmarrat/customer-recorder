@@ -66,10 +66,10 @@ a {
 }
 
 .divider {
-    margin: 20px auto;
+    margin: 5px auto;
     width: 100%;
     max-width: 800px;
-    height: 2px;
+    height: 1px;
     background: #fff;
     border-radius: 5px;
 }
