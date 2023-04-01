@@ -26,10 +26,17 @@ const Congrats = () => {
         <div className="congrats__content">
           <h4>{client}, cпасибо за доверие! 🌺</h4>
           <h4>Ваша запись сохранена! 💖</h4>
-          <h5>Ждем вас: <span>{dayjs(date?.hour).locale('ru').format('DD MMMM, в HH:mm')}</span></h5>
+          <h5>
+            Ждем вас: <span>{dayjs(date?.hour).locale('ru').format('DD MMMM, в HH:mm')}</span>
+          </h5>
+          <h5>
+            По адресу: <a href="https://go.2gis.com/3gpfa" target="_blank" rel="noreferrer" className="map_link">
+            ТЦ "Евразия", 4-й этаж, салон "Kamilla brows"
+          </a>
+          </h5>
         </div>
-        <div className="congrats__btn">
-          <button onClick={goHome}>Вернуться на главное меню</button>
+        <div>
+          <button className="button" onClick={goHome}>Вернуться на главное меню</button>
         </div>
       </div>
     </div>

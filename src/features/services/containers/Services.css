@@ -158,11 +158,11 @@
     font-weight: bold;
 }
 
-.congrats__btn button {
-    text-align: center;
-    padding: 10px 18px;
-    background-color: #ef9b9b;
-    border-radius: 9px;
-    border: none;
-    color: #fff
+.map_link {
+    text-decoration: none;
+    color: #e05959;
+}
+
+.map_link:hover {
+    text-decoration: underline;
 }
