@@ -21,22 +21,28 @@ body {
 }
 
 .button {
-    padding: 10px 0;
-    width: 100%;
+    background-image: linear-gradient(to right, #ef9b9b 0%, #F7BB97  51%, #ef9b9b  100%);
     border: none;
-    border-radius: 8px;
-    background: #ef9b9b;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 18px;
+    padding: 15px 0;
+    width: 100%;
+    margin: 10px;
     text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    font-weight: 500;
+    font-size: 18px;
     color: #fff;
 }
 
 .button:hover {
-    text-decoration: underline;
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }
-
 button:hover {
     cursor: pointer;
 }

@@ -2,7 +2,8 @@
     width: 100%;
     padding: 20px 0;
     background-color: #ef9b9b;
-    margin-bottom: 30px;
+    position: fixed;
+    box-shadow: 0 8px 16px -8px #565656;
 }
 
 .header__wrapper {

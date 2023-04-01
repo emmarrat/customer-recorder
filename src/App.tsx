@@ -14,7 +14,7 @@ function App() {
       <header>
         <Header/>
       </header>
-      <main className="container">
+      <main className="container main">
         <Routes>
           <Route path="/" element={<Services/>}/>
           <Route path="/book-date" element={<BookDatetime/>}/>

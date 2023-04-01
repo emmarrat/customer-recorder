@@ -36,7 +36,6 @@ const Cart = () => {
           Вернуться к процедурам
         </Link>
       </div>
-
       <div className="cart">
         <div className="cart__wrapper">
           <div className="cart__title">

@@ -1,3 +1,7 @@
+.main {
+    padding-top: 150px;
+}
+
 .services {
     display: flex;
     justify-content: space-between;
@@ -105,7 +109,7 @@
 
 .cart__back_wrapper {
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .cart__back {
