@@ -5,6 +5,7 @@ import './Services.css';
 import {Service} from "../../../types";
 import {Link, useNavigate} from "react-router-dom";
 import dayjs from "dayjs";
+import { BsArrowLeftCircle } from "react-icons/bs";
 
 const Cart = () => {
   const dispatch = useAppDispatch();
@@ -33,7 +34,7 @@ const Cart = () => {
     <div className="wrapper">
       <div className="cart__back_wrapper">
         <Link to="/" className=" cart__back">
-          Вернуться к процедурам
+         <BsArrowLeftCircle/>
         </Link>
       </div>
       <div className="cart">

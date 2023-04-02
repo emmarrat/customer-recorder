@@ -7,6 +7,7 @@ import BookCustomer from "./features/services/containers/BookCustomer";
 import Cart from "./features/services/containers/Cart";
 import './App.css';
 import Congrats from "./features/services/containers/Congrats";
+import Footer from "./components/UI/Footer";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
           <Route path="*" element={(<h2 className="not-found">Not found!</h2>)}/>
         </Routes>
       </main>
+      <footer>
+        <Footer/>
+      </footer>
     </>
   );
 }

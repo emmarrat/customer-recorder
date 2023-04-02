@@ -118,7 +118,17 @@
     font-size: 15px;
     text-decoration: none;
     text-transform: none;
+    display: flex;
+    align-items: center;
+}
+
+.cart__back svg {
     color: black;
+    font-size: 27px;
+}
+
+.cart__back svg:active {
+    color: #ef9b9b;
 }
 
 .congrats {

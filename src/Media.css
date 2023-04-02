@@ -2,6 +2,10 @@
     body {
         font-size: 13px;
     }
+
+    .main {
+        padding-top: 190px;
+    }
     .header__wrapper, .header__links {
         justify-content: center;
     }
@@ -19,5 +23,16 @@
     }
     .cart__setting_btn {
         align-self: center;
+    }
+
+    .button {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 400px)  {
+
+    .main {
+        padding-top: 250px;
     }
 }

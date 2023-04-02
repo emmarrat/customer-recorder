@@ -31,8 +31,7 @@ const Congrats = () => {
           </h5>
           <h5>
             По адресу: <a href="https://go.2gis.com/3gpfa" target="_blank" rel="noreferrer" className="map_link">
-            ТЦ "Евразия", 4-й этаж, салон "Kamilla brows"
-          </a>
+            ТЦ "Евразия", 4-й этаж, салон "Kamilla brows"</a>
           </h5>
         </div>
         <div>

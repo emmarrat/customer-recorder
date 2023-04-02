@@ -4,8 +4,7 @@ import './UI.css';
 import '../../App.css';
 import {useAppSelector} from "../../app/hooks";
 import {selectBookedDatetime, selectBookedServices} from "../../features/services/servicesSlice";
-import {HandySvg} from 'handy-svg';
-import icon from '../../assets/icons/shopping-bag.svg';
+import { BsBagHeart } from "react-icons/bs";
 
 
 const Header = () => {
@@ -24,21 +23,16 @@ const Header = () => {
         </div>
       </div>
       {selectedServices.length > 0 &&
-          <>
+          <div className="header__cart">
               <div className="divider"></div>
               <div className="container header__down">
-                  <Link to="/cart" className="header__link header__link_cart">
+                  <Link to="/cart" className="header__link header__link_cart" style={{display: 'flex', alignItems: 'center'}}>
                       Выбранные процедуры
-                      <HandySvg
-                          src={icon}
-                          className="icon"
-                          width="20"
-                          height="20"
-                      />
+                      <BsBagHeart style={{margin: '0 5px 0 10px'}}/>
                       <span className="badge">{selectedServices.length}</span>
                   </Link>
               </div>
-          </>
+          </div>
       }
     </div>
 

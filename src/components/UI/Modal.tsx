@@ -1,4 +1,6 @@
 import React, {ReactElement, useEffect} from 'react';
+import { BsXCircle } from "react-icons/bs";
+
 
 interface Props {
   visible: boolean
@@ -29,14 +31,14 @@ const Modal: React.FC <Props> = ({visible, content, onClose}) => {
         <div className='modal-header'>
           <h3 className='modal-title'>Внимание!</h3>
           <span className='modal-close' onClick={onClose}>
-            &times;
+          <BsXCircle fontSize={20}/>
           </span>
         </div>
         <div className='modal-body'>
           <div className='modal-content'>{content}</div>
         </div>
        <div className='modal-footer'>
-         <button onClick={onClose}>Закрыть</button>
+         <button className="button" onClick={onClose}>Закрыть</button>
        </div>
       </div>
     </div>

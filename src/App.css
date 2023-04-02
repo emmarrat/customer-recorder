@@ -23,7 +23,7 @@ body {
 .button {
     background-image: linear-gradient(to right, #ef9b9b 0%, #F7BB97  51%, #ef9b9b  100%);
     border: none;
-    padding: 15px 0;
+    padding: 15px 2px;
     width: 100%;
     margin: 10px;
     text-align: center;
