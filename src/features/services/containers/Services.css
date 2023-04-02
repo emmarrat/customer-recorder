@@ -155,6 +155,8 @@
     align-items: center;
     background: #ffff;
     border-radius: 15px;
+    animation-name: slide-in;
+    animation-duration: 0.5s;
 }
 
 .congrats__content h4, .congrats__content h5 {
@@ -175,4 +177,14 @@
 
 .map_link:hover {
     text-decoration: underline;
+}
+
+
+@keyframes slide-in {
+    from {
+        transform: translateY(-150px);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
