@@ -16,7 +16,7 @@ function App() {
       <header>
         <Header/>
       </header>
-      <main className="container main">
+      <main className="main container">
         <Routes>
           <Route path="/" element={<Services/>}/>
           <Route path="/book-date" element={<BookDatetime/>}/>
@@ -27,7 +27,7 @@ function App() {
           <Route path="*" element={(<h2 className="not-found">Not found!</h2>)}/>
         </Routes>
       </main>
-      <footer>
+      <footer className="footer">
         <Footer/>
       </footer>
     </>

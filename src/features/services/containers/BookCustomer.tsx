@@ -3,7 +3,7 @@ import CustomerForm from "../components/CustomerForm/CustomerForm";
 
 const BookCustomer = () => {
   return (
-    <div>
+    <div style={{minHeight: '100%'}}>
       <CustomerForm/>
     </div>
   );

@@ -4,7 +4,6 @@ import {GoLocation} from "react-icons/go";
 
 const Footer = () => {
   return (
-    <footer className="footer">
       <div className="container footer-wrapper">
         <div className="footer-left">
           <div className="footer-left__inner">
@@ -36,7 +35,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
   );
 };
 
