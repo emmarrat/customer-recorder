@@ -2,7 +2,7 @@ import React from 'react';
 
 const InstagramCollage = () => {
   return (
-    <div style={{height: '100vh', overflow: 'scroll', padding: '20px 0'}}>
+    <div style={{height: '600px', overflow: 'scroll' }}>
       <iframe
         title="aijan instagram"
         style={{border: 0, width: '100%', height: '100%'}}

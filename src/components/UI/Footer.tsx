@@ -13,14 +13,17 @@ const Footer = () => {
           </div>
           <div className="footer-left__inner">
             <span>Свяжитесь со мной:</span>
-            <a href="https://wa.me/996995708885" target="_blank" rel="noreferrer"
-               className="social-link">
-              <BsWhatsapp/>
-            </a>
-            <a href="https://www.instagram.com/aijanabrows/" target="_blank" rel="noreferrer"
-               className="social-link">
-              <BsInstagram/>
-            </a>
+            <div className="links__wrapper">
+              <a href="https://wa.me/996995708885" target="_blank" rel="noreferrer"
+                 className="social-link">
+                <BsWhatsapp/>
+              </a>
+              <a href="https://www.instagram.com/aijanabrows/" target="_blank" rel="noreferrer"
+                 className="social-link">
+                <BsInstagram/>
+              </a>
+            </div>
+
           </div>
         </div>
         <div className="footer-right">

@@ -1,3 +1,13 @@
+@media screen and (max-width: 890px) {
+    .footer-wrapper{
+        flex-direction: column;
+    }
+
+    .footer-left {
+        margin-bottom: 25px;
+    }
+}
+
 @media screen and (max-width: 620px) {
     body {
         font-size: 13px;
@@ -6,12 +16,20 @@
     .main {
         padding-top: 190px;
     }
+
+    .header {
+        padding: 10px 0;
+    }
     .header__wrapper, .header__links {
         justify-content: center;
     }
 
+    .header__link {
+        margin: 5px 15px 5px 0;
+    }
+
     .logo {
-        margin-bottom: 20px;
+        margin-bottom: 7px;
     }
 
     .cart__item {
@@ -28,11 +46,23 @@
     .button {
         font-size: 15px;
     }
+
+    .footer-wrapper {
+        font-size: 14px;
+    }
+
+    .footer-left__inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .social-link:first-child svg {
+        margin-left: 0;
+    }
 }
 
 @media screen and (max-width: 400px)  {
 
     .main {
-        padding-top: 250px;
+        padding-top: 200px;
     }
 }
