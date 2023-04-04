@@ -1,3 +1,6 @@
+![customer-recorder](https://user-images.githubusercontent.com/99384076/229789667-5b1092e0-f6a5-4956-901b-a56bfba793d5.gif)
+
+
 # Customer recorder
 
 Customer recorder is designed for individuals who provide personal services and want to simplify the process of scheduling appointments with their clients.
@@ -11,7 +14,7 @@ Customer recorder is designed for individuals who provide personal services and 
 - Filling out a form to get information about the client, validating the form, sending the form
 
 ## Stack:
-TypeScript, React, Redux Toolkit, React Router, Axios, Day.js, React Icons, React-Phone-Input-2
+TypeScript, React, Redux Toolkit, React Router, Axios, Day.js, React Icons, React-Phone-Input-2, CSS
 
 ## Installation
 
