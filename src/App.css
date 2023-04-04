@@ -3,7 +3,8 @@
 #root {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;}
+    min-height: 100vh;
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -12,6 +13,12 @@ body {
 
 * {
     box-sizing: border-box;
+}
+
+.main {
+    padding-top: 150px;
+    flex-grow: 1;
+    width: 100%;
 }
 
 .container {
@@ -26,7 +33,7 @@ body {
 }
 
 .button {
-    background-image: linear-gradient(to right, #ef9b9b 0%, #F7BB97  51%, #ef9b9b  100%);
+    background-image: linear-gradient(to right, #ef9b9b 0%, #F7BB97 51%, #ef9b9b 100%);
     border: none;
     padding: 15px 5px;
     width: 100%;
@@ -47,6 +54,7 @@ body {
     color: #fff;
     text-decoration: none;
 }
+
 button:hover {
     cursor: pointer;
 }
@@ -59,6 +67,7 @@ button:active {
     background: #919191;
     color: #DDDDDD;
 }
+
 .button__selected:hover {
     text-decoration: none;
 }

@@ -1,8 +1,3 @@
-.main {
-    padding-top: 150px;
-    flex-grow: 1;
-    width: 100%;
-}
 
 .services {
     display: flex;
@@ -213,12 +208,13 @@
     margin-left: 5px;
 }
 
+
 .map_link {
     text-decoration: none;
     color: #e05959;
 }
 
-.map_link:hover {
+.map_link:hover, .congrats-link:hover{
     text-decoration: underline;
 }
 
