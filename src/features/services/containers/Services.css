@@ -162,14 +162,55 @@
 }
 
 .congrats__content h4, .congrats__content h5 {
-    margin: 0 0 25px;
+    margin: 0 0 20px;
     text-transform: uppercase;
     text-align: center;
 }
 
+.congrats__content {
+    margin-bottom: 20px;
+}
+
 .congrats__content span {
     color: #e05959;
-    font-weight: bold;
+    font-weight: 700;
+}
+
+.congrats__links-title {
+    color: black;
+    font-weight: 700;
+    font-size: 15px;
+    margin: 0 0 5px;
+    text-transform: uppercase;
+    text-align: center;}
+
+.congrats__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.congrats-link{
+    display: flex;
+    align-items: center;
+    color: #e05959;
+    text-decoration: none;
+}
+
+.congrats-link:nth-of-type(1), .congrats-link:nth-of-type(2) {
+    margin-right: 15px;
+}
+.congrats-link svg {
+    margin-left: 5px;
+}
+
+.congrats__phone-title {
+    margin: 0 0 20px;
+}
+
+.congrats__phone {
+    margin-left: 5px;
 }
 
 .map_link {
