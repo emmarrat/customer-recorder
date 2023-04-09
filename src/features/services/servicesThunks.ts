@@ -29,7 +29,6 @@ export const fetchDatetime = createAsyncThunk<SortedAppointment[]>(
       appointmentsByDate[date].push(appointment);
     });
 
-    // Sort appointments by time and format them for output
     Object.entries(appointmentsByDate).forEach(([date, appointments]) => {
       const sortedAppointmentsByTime = appointments.sort((a, b) =>
         a.date_time.localeCompare(b.date_time)
@@ -61,6 +60,5 @@ export const createAppointment = createAsyncThunk<string, PostData,  {rejectValu
       }
       throw e;
     }
-
   }
-)
+);
