@@ -5,6 +5,7 @@ import {fetchServices} from "../servicesThunks";
 import ServicesCard from "../components/ServicesCard/ServicesCard";
 import {Service} from "../../../types";
 import './Services.css';
+import {TailSpin} from "react-loader-spinner";
 
 const Services = () => {
   const dispatch = useAppDispatch();
@@ -23,6 +24,16 @@ const Services = () => {
           {services.map(service => (
             <ServicesCard service={service} key={service.id} onClick={addToCart}/>
           ))}
+          {loading && <TailSpin
+              height="80"
+              width="80"
+              color="#ef9b9b"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+          />}
         </div>
   );
 };

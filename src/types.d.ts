@@ -36,6 +36,7 @@ interface PostData {
 
 interface PostResponse {
   customer_full_name: string;
+  id: number;
 }
 
 interface ValidationError {

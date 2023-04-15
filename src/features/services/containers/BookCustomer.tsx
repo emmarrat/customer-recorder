@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomerForm from "../components/CustomerForm/CustomerForm";
+import CustomerForm from "../components/Forms/CustomerForm/CustomerForm";
 
 const BookCustomer = () => {
   return (

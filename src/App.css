@@ -80,6 +80,17 @@ button:active {
     color: white;
 }
 
+.validation-error__block {
+    margin-bottom: 50px;
+}
+
+.validation-error {
+    text-align: center;
+    color: #ec1515;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+}
+
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;

@@ -9,8 +9,13 @@ import './App.css';
 import Congrats from "./features/services/containers/Congrats";
 import Footer from "./components/UI/Footer";
 import InstagramCollage from "./components/UI/InstagramCollage";
+import {useAppSelector} from "./app/hooks";
+import {selectBookedDatetime, selectBookedServices} from "./features/services/servicesSlice";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
+  const selectedDate = useAppSelector(selectBookedDatetime);
+  const selectedServices = useAppSelector(selectBookedServices);
   return (
     <>
       <header>
@@ -20,7 +25,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Services/>}/>
           <Route path="/book-date" element={<BookDatetime/>}/>
-          <Route path="/book-customer" element={<BookCustomer/>}/>
+          <Route path="/book-customer" element={
+            <ProtectedRoute isAllowed={selectedDate !== null && selectedServices.length !== 0}>
+              <BookCustomer/>
+            </ProtectedRoute>
+          }/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/congrats" element={(<Congrats/>)}/>
           <Route path="/my-works" element={(<InstagramCollage/>)}/>

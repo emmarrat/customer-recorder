@@ -1,13 +1,13 @@
 import React from 'react';
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
-import {clearStates, selectBookedDatetime, selectClient} from "../servicesSlice";
+import {clearStates, selectBookedDatetime, selectResponse} from "../servicesSlice";
 import dayjs from "dayjs";
 import {Navigate, useNavigate} from "react-router-dom";
-import {BsInstagram, BsWhatsapp, BsTelephoneOutbound} from "react-icons/bs";
+import {BsInstagram, BsTelephoneOutbound, BsWhatsapp} from "react-icons/bs";
 
 const Congrats = () => {
   const date = useAppSelector(selectBookedDatetime);
-  const client = useAppSelector(selectClient);
+  const response = useAppSelector(selectResponse);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const Congrats = () => {
     dispatch(clearStates());
   }
 
-  if (!client) {
+  if (!response) {
     return <Navigate to="/"/>;
   }
 
@@ -24,8 +24,8 @@ const Congrats = () => {
     <div className="congrats">
       <div className="congrats__wrapper">
         <div className="congrats__content">
-          <h4>{client}, cпасибо за доверие! 🌺</h4>
-          <h4>Ваша запись сохранена! 💖</h4>
+          <h4>{response?.customer_full_name}, cпасибо за доверие! <span aria-hidden="true" role="img">🌺</span></h4>
+          <h4>Ваша запись сохранена! <span aria-hidden="true" role="img">💖</span></h4>
           <h5>
             Ждем вас: <span>{dayjs(date?.hour).locale('ru').format('DD MMMM, в HH:mm')}</span>
           </h5>
@@ -52,6 +52,10 @@ const Congrats = () => {
               </a>
             </div>
           </div>
+          <p className="congrats__links-title">Запомните это число: <span style={{color: 'e05959'}}>{response?.id}</span><br/>
+            Оно понадобиться если вы захотите отменить запись
+          </p>
+
         </div>
         <div>
           <button className="button" onClick={goHome}>Вернуться на главное меню</button>

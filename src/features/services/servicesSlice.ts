@@ -1,4 +1,4 @@
-import {Datetime, Service, SortedAppointment, ValidationError} from "../../types";
+import {Datetime, PostResponse, Service, SortedAppointment, ValidationError} from "../../types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../../app/store";
 import {createAppointment, fetchDatetime, fetchServices} from "./servicesThunks";
@@ -10,7 +10,7 @@ interface ServicesState {
   selectedDatetime: Datetime | null;
   fetchLoading: boolean;
   total: number;
-  client: string | null;
+  postResponse: PostResponse | null;
   createLoading: boolean;
   validationError: ValidationError | null;
 }
@@ -22,7 +22,7 @@ const initialState: ServicesState = {
   fetchLoading: false,
   selectedDatetime: null,
   total: 0,
-  client: null,
+  postResponse: null,
   createLoading: false,
   validationError: null,
 };
@@ -60,7 +60,8 @@ export const servicesSlice = createSlice({
       state.selectedItems = [];
       state.selectedDatetime = null;
       state.total = 0;
-      state.client = null;
+      state.postResponse = null;
+      state.validationError = null;
     }
   },
   extraReducers: builder => {
@@ -87,9 +88,10 @@ export const servicesSlice = createSlice({
     builder.addCase(createAppointment.pending, (state) => {
       state.createLoading = true;
     });
-    builder.addCase(createAppointment.fulfilled, (state, {payload: client}) => {
+    builder.addCase(createAppointment.fulfilled, (state, {payload: response}) => {
       state.createLoading = false;
-      state.client = client;
+      state.postResponse = response;
+      state.validationError = null;
     });
     builder.addCase(createAppointment.rejected, (state,{payload: error} ) => {
       state.createLoading = false;
@@ -107,7 +109,7 @@ export const selectDatetime = (state: RootState) => state.services.datetime;
 export const selectBookedServices = (state: RootState) => state.services.selectedItems;
 export const selectBookedDatetime  = (state: RootState) => state.services.selectedDatetime;
 export const selectTotal = (state: RootState) => state.services.total;
-export const selectClient = (state: RootState) => state.services.client;
+export const selectResponse = (state: RootState) => state.services.postResponse;
 export const selectLoading = (state: RootState) => state.services.createLoading;
 export const selectValidationError = (state: RootState) => state.services.validationError;
 

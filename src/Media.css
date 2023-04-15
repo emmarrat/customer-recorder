@@ -77,4 +77,9 @@
     .main {
         padding-top: 200px;
     }
+
+    .footer-left__inner{
+        flex-direction: row;
+        align-items: center;
+    }
 }

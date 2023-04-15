@@ -17,12 +17,12 @@ const Header = () => {
         <div className="logo"><Link to="/">Aijana brows</Link></div>
         <div className="header__links">
           <Link className="header__link" to="/my-works">Мои работы</Link>
-          <Link className="header__link" to="/book-date">
-            {selectedDatetime === null || selectedServices.length === 0 ? 'Выбрать день и время' : 'Оформить запись'}
-          </Link>
+          {!selectedDatetime && <Link className="header__link" to="/book-date">Выбрать день и время</Link> }
+          {(selectedDatetime && selectedServices.length > 0) && <Link className="header__link" to="/book-customer">Оформить запись</Link>}
+          {selectedServices.length === 0 && <Link className="header__link"  to="/">Выбрать услуги</Link>}
         </div>
       </div>
-      {selectedServices.length > 0 &&
+      {(selectedServices.length > 0 || selectedDatetime) &&
           <div className="header__cart">
               <div className="divider"></div>
               <div className="container header__down">

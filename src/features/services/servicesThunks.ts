@@ -14,7 +14,7 @@ export const fetchServices = createAsyncThunk<Service[]>(
 export const fetchDatetime = createAsyncThunk<SortedAppointment[]>(
   'services/fetchDatetime',
   async () => {
-    const response = await axiosApi.get<DatetimeApi[]>('business-hours/?format=json');
+    const response = await axiosApi.get<DatetimeApi[]>('/business-hours/?format=json');
     const responseData = response.data.sort((a, b) => Date.parse(a.date_time) - Date.parse(b.date_time));
 
     const sortedAppointments: SortedAppointment[] = [];
@@ -47,13 +47,17 @@ export const fetchDatetime = createAsyncThunk<SortedAppointment[]>(
   }
 );
 
-export const createAppointment = createAsyncThunk<string, PostData,  {rejectValue: ValidationError}>(
+export const createAppointment = createAsyncThunk<PostResponse, PostData,  {rejectValue: ValidationError}>(
   'services/createAppointment',
   async (appointment, {rejectWithValue}) => {
     try {
       const response = await axiosApi.post<PostResponse>('/appointments/', appointment);
       const responseData = response.data;
-      return responseData.customer_full_name;
+      const successfulResponse: PostResponse = {
+        id: responseData.id,
+        customer_full_name: responseData.customer_full_name
+      };
+      return successfulResponse;
     }catch (e) {
       if (isAxiosError(e) && e.response && e.response.status === 400) {
         return rejectWithValue(e.response.data as ValidationError);

@@ -4,8 +4,8 @@ import dayjs from "dayjs";
 import 'dayjs/locale/ru';
 import './DatetimeCard.css';
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
-import {addDatetime, selectBookedDatetime, selectBookedServices} from "../../servicesSlice";
-import {Navigate, useNavigate} from "react-router-dom";
+import {addDatetime, selectBookedServices} from "../../servicesSlice";
+import {useNavigate} from "react-router-dom";
 
 interface Props {
   datetime: SortedAppointment
@@ -15,7 +15,6 @@ const DatetimeCard: React.FC<Props> = ({datetime}) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const selectedServices = useAppSelector(selectBookedServices);
-  const selectedDatetime = useAppSelector(selectBookedDatetime);
   const [isSelected, setIsSelected] =  useState(false);
 
   const chooseDatetime = (bookTime: Datetime) => {
@@ -27,10 +26,6 @@ const DatetimeCard: React.FC<Props> = ({datetime}) => {
       navigate('/cart');
     }
   };
-
-  if(selectedDatetime) {
-    return <Navigate to='/book-customer'/>
-  }
 
   return (
     <div className="date-card">
