@@ -42,3 +42,8 @@ interface PostResponse {
 interface ValidationError {
   [key: string]: string;
 }
+
+interface PostCancel {
+  customer_phone: string,
+  cancel_reason: string,
+}

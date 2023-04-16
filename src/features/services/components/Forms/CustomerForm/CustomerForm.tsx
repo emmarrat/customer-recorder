@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {PostData} from "../../../../../types";
-import '../CustomerForm.css';
+import '../Form.css';
 import {useAppDispatch, useAppSelector} from "../../../../../app/hooks";
-import {selectBookedDatetime, selectBookedServices, selectValidationError} from "../../../servicesSlice";
+import {clearStates, selectBookedDatetime, selectBookedServices, selectValidationError} from "../../../servicesSlice";
 import {useNavigate} from "react-router-dom";
 import PhoneInput from 'react-phone-input-2'
 import {createAppointment} from "../../../servicesThunks";
 import Modal from "../../../../../components/UI/Modal";
-import {errorKeys} from "../../../../../constants";
+import {errorKeys, validatePhoneNumber} from "../../../../../constants";
 
 
 const CustomerForm = () => {
@@ -25,13 +25,6 @@ const CustomerForm = () => {
 
   const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
-  };
-
-  const validatePhoneNumber = (phoneNumber: string) => {
-    if (phoneNumber.slice(0, 3) !== "996") {
-      return false;
-    }
-    return phoneNumber.length === 12;
   };
 
   const onFormSubmit = async (e: React.FormEvent) => {
@@ -52,6 +45,7 @@ const CustomerForm = () => {
     };
 
     await dispatch(createAppointment(obj)).unwrap();
+    await dispatch(clearStates());
     setName('');
     setPhone('');
     navigate('/congrats');

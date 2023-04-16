@@ -1,9 +1,8 @@
 import React from 'react';
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
-import {clearStates, selectBookedDatetime, selectResponse} from "../servicesSlice";
+import {clearPostResponse, selectBookedDatetime, selectResponse} from "../servicesSlice";
 import dayjs from "dayjs";
 import {Navigate, useNavigate} from "react-router-dom";
-import {BsInstagram, BsTelephoneOutbound, BsWhatsapp} from "react-icons/bs";
 
 const Congrats = () => {
   const date = useAppSelector(selectBookedDatetime);
@@ -13,7 +12,7 @@ const Congrats = () => {
 
   const goHome = () => {
     navigate('/');
-    dispatch(clearStates());
+    dispatch(clearPostResponse());
   }
 
   if (!response) {
@@ -33,29 +32,9 @@ const Congrats = () => {
             По адресу: <a href="https://go.2gis.com/3gpfa" target="_blank" rel="noreferrer" className="map_link">
             ТЦ "Евразия", 4-й этаж, 407 кабинет</a>
           </h5>
-          <div>
-            <p className="congrats__links-title">Если у вас будут вопросы, свяжитесь со мной:</p>
-            <div className="congrats__links">
-              <a href="https://wa.me/996995708885" target="_blank" rel="noreferrer"
-                 className="congrats-link">
-                what's app
-                <BsWhatsapp/>
-              </a>
-              <a href="https://www.instagram.com/aijanabrows/" target="_blank" rel="noreferrer"
-                 className="congrats-link">
-                instagram
-                <BsInstagram/>
-              </a>
-              <a href="tel:+996995708885" className="congrats-link congrats__phone">
-                0995 708 885
-                <BsTelephoneOutbound/>
-              </a>
-            </div>
-          </div>
-          <p className="congrats__links-title">Запомните это число: <span style={{color: 'e05959'}}>{response?.id}</span><br/>
-            Оно понадобиться если вы захотите отменить запись
+          <p className="congrats__links-title">Запомните номер вашей записи: <span style={{color: 'e05959'}}>{response?.id}</span><br/>
+            Он понадобится если вы захотите отменить запись
           </p>
-
         </div>
         <div>
           <button className="button" onClick={goHome}>Вернуться на главное меню</button>

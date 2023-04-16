@@ -1,6 +1,7 @@
 import React from 'react';
 import {BsWhatsapp, BsInstagram, BsGithub} from "react-icons/bs";
 import {GoLocation} from "react-icons/go";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -23,6 +24,9 @@ const Footer = () => {
                 <BsInstagram/>
               </a>
             </div>
+          </div>
+          <div className="footer-left__inner">
+            <Link to="/cancel" className="authors-link">Отменить запись</Link>
 
           </div>
         </div>

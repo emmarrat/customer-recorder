@@ -1,5 +1,13 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {DatetimeApi, PostData, PostResponse, Service, SortedAppointment, ValidationError} from "../../types";
+import {
+  DatetimeApi,
+  PostCancel,
+  PostData,
+  PostResponse,
+  Service,
+  SortedAppointment,
+  ValidationError
+} from "../../types";
 import axiosApi from "../../axiosApi";
 import {isAxiosError} from "axios";
 
@@ -58,6 +66,22 @@ export const createAppointment = createAsyncThunk<PostResponse, PostData,  {reje
         customer_full_name: responseData.customer_full_name
       };
       return successfulResponse;
+    }catch (e) {
+      if (isAxiosError(e) && e.response && e.response.status === 400) {
+        return rejectWithValue(e.response.data as ValidationError);
+      }
+      throw e;
+    }
+  }
+);
+
+export const cancelAppointment = createAsyncThunk<void,  {id: number, cancel: PostCancel},  {rejectValue: ValidationError}>(
+  'services/cancelAppointment',
+  async ({id, cancel}, {rejectWithValue}) => {
+    try {
+      const response = await axiosApi.patch<PostResponse>(`/appointments/${id}/cancel`,cancel );
+      const responseData = response.data;
+      console.log(responseData);
     }catch (e) {
       if (isAxiosError(e) && e.response && e.response.status === 400) {
         return rejectWithValue(e.response.data as ValidationError);

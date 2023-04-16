@@ -12,6 +12,7 @@ import InstagramCollage from "./components/UI/InstagramCollage";
 import {useAppSelector} from "./app/hooks";
 import {selectBookedDatetime, selectBookedServices} from "./features/services/servicesSlice";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import CancelBooking from "./features/services/containers/CancelBooking";
 
 function App() {
   const selectedDate = useAppSelector(selectBookedDatetime);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/congrats" element={(<Congrats/>)}/>
           <Route path="/my-works" element={(<InstagramCollage/>)}/>
+          <Route path="/cancel" element={(<CancelBooking/>)}/>
           <Route path="*" element={(<h2 className="not-found">Not found!</h2>)}/>
         </Routes>
       </main>

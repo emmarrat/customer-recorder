@@ -41,7 +41,7 @@ export const servicesSlice = createSlice({
         state.total += parseFloat(service.price);
       }
     },
-    removeService:(state, {payload: service}: PayloadAction<Service>) => {
+    removeService: (state, {payload: service}: PayloadAction<Service>) => {
       const existingIndex = state.services.find(item => {
         return item.id === service.id;
       });
@@ -60,9 +60,11 @@ export const servicesSlice = createSlice({
       state.selectedItems = [];
       state.selectedDatetime = null;
       state.total = 0;
-      state.postResponse = null;
       state.validationError = null;
-    }
+    },
+    clearPostResponse: (state) => {
+      state.postResponse = null;
+    },
   },
   extraReducers: builder => {
     builder.addCase(fetchServices.pending, (state) => {
@@ -93,21 +95,28 @@ export const servicesSlice = createSlice({
       state.postResponse = response;
       state.validationError = null;
     });
-    builder.addCase(createAppointment.rejected, (state,{payload: error} ) => {
+    builder.addCase(createAppointment.rejected, (state, {payload: error}) => {
       state.createLoading = false;
-      state.validationError =  error || null;
+      state.validationError = error || null;
     });
   }
 });
 
 export const servicesReducer = servicesSlice.reducer;
-export const {addService, addDatetime, removeDatetime, removeService, clearStates} = servicesSlice.actions;
+export const {
+  addService,
+  addDatetime,
+  removeDatetime,
+  removeService,
+  clearStates,
+  clearPostResponse
+} = servicesSlice.actions;
 
 export const selectServices = (state: RootState) => state.services.services;
 export const selectFetching = (state: RootState) => state.services.fetchLoading;
 export const selectDatetime = (state: RootState) => state.services.datetime;
 export const selectBookedServices = (state: RootState) => state.services.selectedItems;
-export const selectBookedDatetime  = (state: RootState) => state.services.selectedDatetime;
+export const selectBookedDatetime = (state: RootState) => state.services.selectedDatetime;
 export const selectTotal = (state: RootState) => state.services.total;
 export const selectResponse = (state: RootState) => state.services.postResponse;
 export const selectLoading = (state: RootState) => state.services.createLoading;
